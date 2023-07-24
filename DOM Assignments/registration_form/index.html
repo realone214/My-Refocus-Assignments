@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration form</title>
+</head>
+    <body>
+        <form name="signup" id="signup-form">
+            <h1>Signup</h1>
+            <div class="form-control">
+                <div>
+                    <label>First Name:</label>
+                    <input type="text" name="fname" id="first-name" autocomplete="given-name">
+                    <br>
+                    <label>Middle Name:</label>
+                    <input type="text" name="mname" id="middle-name" autocomplete="given-name"><br>
+                    <label>Last Name:</label>
+                    <input type="text" name="lname" id="last-name" autocomplete="family-name"><br>
+                    <label>Birth Day:</label>
+                    <input type="date" name="bday" id="birth-day" ><br>
+                    <label>Email:</label>
+                    <input type="email" name="email" id="e-mail" autocomplete="off"><br><br>
+                </div>
+                <div>Region:
+                    <select name="region" id="region-selection" autocomplete="off">
+                        <option value="">-Select Region-</option>
+                        <option value="Region-I">Region I --- Ilocos Region</option>
+                        <option value="Region-II">Region II --- Cagayan Valley</option>
+                        <option value="Region-III">Region III --- Central Luzon</option>
+                        <option value="Region-IV-A">Region IV-A --- CALABARZON</option>
+                        <option disabled>MIMAROPA Region</option>
+                        <option value="Region-V">Region V --- Bicol Region</option>
+                        <option value="Region-VI">Region VI --- Western Visayas</option>
+                        <option value="Region-VII">Region VII --- Central Visayas</option>
+                        <option value="Region-VIII">Region VIII --- Eastern Visayas</option>
+                        <option value="Region-IX">Region IX --- Zamboanga Peninsula</option>
+                        <option value="Region-X">Region X --- Northern Mindanao</option>
+                        <option value="Region-XI">Region XI --- Davao Region</option>
+                        <option value="Region-XII">Region XII --- SOCCSKSARGEN</option>
+                        <option value="Region-XIII">Region XIII --- Caraga</option>
+                        <option value="NCR">NCR --- National Capital Region</option>
+                        <option value="CAR">CAR --- Cordillera Administrative Region</option>
+                        <option value="BARMM">BARMM --- Bangsamoro Autonomous Region in Muslim Mindanao</option><br><br>
+                    </select><br>
+                    <label>Province:</label>
+                    <input type="text" name="province" id="province"><br>
+                    <label>Barangay:</label>
+                    <input type="text" name="barangay" id="barangay"><br>
+                    <label>Street:</label>
+                    <input type="text" name="street" id="street"><br><br>
+                </div>
+                
+                <div id="Gender"> <strong> Gender: </strong><br>
+                    <label>
+                    <input type="radio" name="gender" value="male" >
+                    Male</label>
+                
+                    <label>
+                    <input type="radio" name="gender" value="female">
+                    Female</label>
+                
+                    <label>
+                    <input type="radio" name="gender" value="other">
+                    Other</label><br><br>
+                </div>
+                <div><strong> First Dose </strong> <br> 
+                    <label>Vaccination Brand</label>
+                    <select name="doseOne"> 
+                        <option value="">-Select Brand-</option>
+                        <option value="Pfizer">Pfizer BioNTech</option>
+                        <option value="AstraZeneca">AstraZeneca</option>
+                        <option value="Coronavac">Coronavac</option>
+                        <option value="Sputnik">Sputnik V</option>
+                        <option value="Janssen">Janssen</option>
+                        <option value="Covaxin">Covaxin</option>
+                        <option value="Moderna">Moderna</option>
+                        <option value="Sinopharm">Sinopharm</option>
+                        <option value="Covovax">Covovax</option>
+                    </select>
+                </div>
+                <div> Date of Vaccination
+                    <input type="date" name="vaxOneDate"><br>
+                    <label>Vaccination Site:</label>
+                    <input type="text" name="vaxOneSite"><br><br>
+                </div>
+                <div id="secondDose"> Did you already get your second vaccination?
+                    <label>
+                        <input type="checkbox" name="secondVax" id="second-vax-yes" value="yes">
+                    </label>Yes  
+                    <label>
+                        <input type="checkbox" name="secondVax" id="second-vax-no" value="no"> 
+                    </label>No<br><br>
+                </div>
+                <div id="vaxTwo" hidden> <strong>Second Dose </strong> <br>
+                    <label> Vaccination Brand </label>
+                    <select name="doseTwo" name="vaccination-brand-SD">
+                        <option value=""></option>
+                        <option value="Pfizer">Pfizer BioNTech</option>
+                        <option value="Coronavac">Coronavac</option>
+                        <option value="Sputnik">Sputnik V</option>
+                        <option value="Janssen">Janssen</option>
+                        <option value="Covaxin">Covaxin</option>
+                        <option value="Moderna">Moderna</option>
+                        <option value="Sinopharm">Sinopharm</option>
+                        <option value="Covovax">Covovax</option>
+                    </select>     
+                <div> Date of Vaccination:
+                    <input type="date" name="vaxTwoDate"><br>
+                    <label>Vaccination Site:</label>
+                    <input type="text" name="vaxTwoSite"><br><br>
+                </div>
+            </div><br>
+            <label >Vaccination Info</label>
+            <div id="output">
+
+            </div>
+            <input type="submit" name="submit">
+        </form>    
+    </body>
+    <script type="text/javascript">
+        const form = document.forms.signup;
+        const _fname = form.fname;
+        const _mname = form.mname;
+        const _lname = form.lname;
+        const _bday = form.bday;
+        const _email = form.email;
+        const _region = form.region;
+        const _province = form.province;
+        const _barangay = form.barangay;
+        const _street = form.street;
+        const _gender = form.gender;
+        const _vaxOne = form.doseOne;
+        const _vaxOneDate = form.vaxOneDate;
+        const _vaxOneSite = form.vaxOneSite;
+        const _vaxTwo = form.doseTwo;
+        const _vaxTwoDate = form.vaxTwoDate;
+        const _vaxTwoSite = form.vaxTwoSite;
+
+        let checkbox1 = document.getElementById('second-vax-yes');
+        let checkbox2 = document.getElementById('second-vax-no');
+        let vax2div = document.getElementById('vaxTwo');
+        let cont = document.getElementById('signup-form');
+        
+        form.addEventListener('submit',function(event){
+            let secondVax =''
+            event.preventDefault();
+            checkbox1.checked==true
+            ?secondVax = `Second Dose: ${_vaxTwo.value}, ${_vaxTwoDate.value}, ${_vaxTwoSite.value}`
+            :secondVax = `Second Dose: Not Vaccinated. ${secondVax=''}`   
+
+            document.getElementById('output').innerText = 
+            `Full Name: ${_fname.value} ${_mname.value} ${_lname.value}
+            Birthday: ${_bday.value} 
+            Email: ${_email.value}
+            Address: ${_street.value}, ${_barangay.value}, ${_province.value}, ${_region.value} 
+            Gender: ${_gender.value}
+            First Dose: ${_vaxOne.value}, ${_vaxOneDate.value}, ${_vaxOneSite.value} 
+            ${secondVax}` 
+            document.getElementById('output').style.backgroundColor='#B4F8C8'               
+        });
+
+        checkbox1.addEventListener('change',function(){
+            if (checkbox1.checked==true) {
+                vax2div.style.display= 'block'
+                checkbox1.checked = true
+                checkbox2.checked = false
+            }else{vax2div.style.display= 'none'}
+        });
+
+        checkbox2.addEventListener('change',function(){
+            if(checkbox2.checked==true){
+                vax2div.style.display= 'none'
+                checkbox1.checked = false
+                checkbox2.checked = true
+            }else{vax2div.style.display= 'none'}
+        });
+    </script>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simple Quiz</title>
+    </head>
+    <body>
+        <form name="quiz"><h1>Simple Quiz</h1>
+            <label>1. What is the capital of the Philippines?</label><br><br>
+            <input type="text" name="questionOne"><br>
+            <div id="questionOneMessage"></div><br>
+            <div>
+                <label>2. What is the value of x in this equation: x = 3 + 2x5.</label><br><br>
+                <input type="radio" name="questionTwo" value="A">
+                <label>x = 25</label><br>
+                <input type="radio" name="questionTwo" value="B">
+                <label>x = 13</label><br>
+                <input type="radio" name="questionTwo" value="C">
+                <label>x = 18</label>
+                <div  id="questionTwoMessage"></div>
+            </div><br><br>
+            <div>
+                <label>3. Which of the following birds can fly? Choose 3 correct answers.</label><br><br>
+                <input type="checkbox" name="questionThreeA" value="A">
+                <label>Parrot</label><br>
+                <input type="checkbox" name="questionThreeB" value="B">
+                <label>Eagle</label><br>
+                <input type="checkbox" name="questionThreeC" value="C">
+                <label>Penguin</label><br>
+                <input type="checkbox" name="questionThreeD" value="D">
+                <label>Crow</label>
+                <div id="questionThreeMessage"></div>
+            </div><br><br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+    </body> 
+    <script type="text/javascript">
+        
+        const form = document.forms.quiz;
+        
+        form.addEventListener('submit',function(event){
+            event.preventDefault();
+            questionOne();
+            questionTwo();
+            questionThree();
+        });
+
+        form.addEventListener('reset', function(event){
+            //event.preventDefault();
+            messages('questionOneMessage','','');
+            messages('questionTwoMessage','','');
+            messages('questionThreeMessage','','');
+        });
+
+        function questionOne(){
+            const _questionOne = form.questionOne;
+            if(!_questionOne.value){
+                messages('questionOneMessage','Question 1 You must Enter an Answer','red');
+            }else{ 
+            _questionOne.value == "MANILA" ||_questionOne.value == "Manila" ||_questionOne.value == "manila" 
+            ? messages('questionOneMessage','Question 1 answer is correct','green')
+            : messages('questionOneMessage','Question 1 answer is incorrect', 'orange');
+            };
+              
+        };
+
+        function questionTwo(){
+            const _questionTwo = form.questionTwo;
+
+            if(!_questionTwo.value){
+                messages('questionTwoMessage','Question 2 You must Enter an Answer','red');
+            }else{ 
+                _questionTwo.value =='B' 
+                ? messages('questionTwoMessage','Question 2 answer is correct', "green") 
+                : messages('questionTwoMessage','Question 2 answer is incorrect', "orange");
+            };
+        };
+
+        function questionThree(){
+            const answers = [];
+            const correctAnswers = 'ABD';
+            const _A = form.questionThreeA;
+            const _B = form.questionThreeB;
+            const _C = form.questionThreeC;
+            const _D = form.questionThreeD;
+
+            const ans = [_A,_B,_C,_D];
+
+            ans.forEach(element => {
+                if (element.checked){
+                    answers.push(element.value);                 
+                };
+            });
+                if(answers.length < 1){
+                    messages('questionThreeMessage','Question 3 You must Enter an Answer', "red");
+                }else{
+                    answers.join('') == correctAnswers 
+                    ? messages('questionThreeMessage','Question 3 answer is correct', "green")  
+                    : messages('questionThreeMessage','Question 3 answer is incorrect', "orange");
+                };
+            };
+
+        function messages(questionNumber,message,color){
+            const _message = document.getElementById(questionNumber).innerText = message; 
+            document.getElementById(questionNumber).style.color = color;
+        };
+
+    </script>       
+</html>
