@@ -1,0 +1,41 @@
+body{
+    font-family: sans-serif;
+    background-color: #f5f5f5;
+}
+
+.name-container{
+    text-decoration: underline;
+}
+
+.photo{
+    border: 3px solid orangered;
+    border-radius: 50%;
+}
+
+.main-container {
+    padding: 10px;
+    display: flexbox;
+    
+}
+
+.photo-name-container {
+    text-align: center;
+}
+
+.experience-border, .education-border, .skills-border, .language-border, .hobbies-border, .references-border, .certification-border, .name-border, .summary-border{
+    border-bottom: 2px solid orangered;
+}
+
+@media only screen and (min-width: 768px) {
+    .main-container {
+        display:grid;
+        grid-template-columns: .5fr 1fr;
+    }
+    aside {
+        grid-column: 1/2;
+    }
+
+    main{
+        grid-column: 2/3;
+    } 
+}
